@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:socialmedia/common/loader.dart';
 import 'package:socialmedia/features/feeds/widgets/post_card.dart';
 import 'package:socialmedia/utils/colors.dart';
 import 'package:socialmedia/utils/globalvariables.dart';
@@ -21,7 +22,8 @@ class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final User user = Provider.of<UserProvider>(context).getUser;
+    // final User user = Provider.of<UserProvider>(context).getUser;
+    // final User user = Provider.of<UserProvider>(context).getUser;
 
     return Scaffold(
       backgroundColor: width > webScreenSize ? webBgColor : mobileBgColor,
@@ -64,7 +66,6 @@ class _FeedScreenState extends State<FeedScreen> {
                         vertical: width > webScreenSize ? 15 : 0,
                       ),
                       child: PostCard(
-                        sanpuserId: user.uid,
                         snap: snapshot.data!.docs[index].data(),
                       ),
                     ));

@@ -19,7 +19,6 @@ List<Widget> homeScreenItems = [
   const AddPostScrreen(),
 
   // fav
-  const Text("fav"),
 
   // account
   ProfileScreen(
