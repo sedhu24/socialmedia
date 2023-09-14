@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "450481081257",
+    "project_id": "iplexgram",
+    "storage_bucket": "iplexgram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450481081257:android:da5405d7e0ecdd536112b8",
+        "android_client_info": {
+          "package_name": "com.example.socialmedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450481081257-vck4qr8f0qmd8c76ac8utcfkh9bafubv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNYsG4tVJPenvQVDuFJp1Ufnq4mBT0psk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450481081257-vck4qr8f0qmd8c76ac8utcfkh9bafubv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
