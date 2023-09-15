@@ -22,7 +22,7 @@ class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    // final User user = Provider.of<UserProvider>(context).getUser;
+    final User user = Provider.of<UserProvider>(context).getUser;
     // final User user = Provider.of<UserProvider>(context).getUser;
 
     return Scaffold(
@@ -66,6 +66,7 @@ class _FeedScreenState extends State<FeedScreen> {
                         vertical: width > webScreenSize ? 15 : 0,
                       ),
                       child: PostCard(
+                        sanpuserId: user.uid,
                         snap: snapshot.data!.docs[index].data(),
                       ),
                     ));

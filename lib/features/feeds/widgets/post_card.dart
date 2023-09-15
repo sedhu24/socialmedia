@@ -17,11 +17,9 @@ import '../../../model/user.dart';
 
 class PostCard extends StatefulWidget {
   final snap;
+  final sanpuserId;
 
-  const PostCard({
-    super.key,
-    required this.snap,
-  });
+  const PostCard({super.key, required this.snap, required this.sanpuserId});
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -37,36 +35,36 @@ class _PostCardState extends State<PostCard> {
   void initState() {
     super.initState();
     getComments();
-    // loadfav();
+    loadfav();
   }
 
-  // void loadfav() async {
-  //   try {
-  //     DocumentSnapshot snap = await FirebaseFirestore.instance
-  //         .collection("users")
-  //         .doc(widget.sanpuserId)
-  //         .get();
+  void loadfav() async {
+    try {
+      DocumentSnapshot snap = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(widget.sanpuserId)
+          .get();
 
-  //     List favorites = (snap.data()! as dynamic)["favorites"];
+      List favorites = (snap.data()! as dynamic)["favorites"];
 
-  //     if (favorites.contains(widget.snap["postId"])) {
-  //       // await FireStoreMethods().favoritespostId(
-  //       //   widget.sanpuserId,
-  //       //   widget.snap["postId"],
-  //       // );
-  //       print("Fav : $favorites");
-  //       setState(() {
-  //         isfav = true;
-  //       });
-  //     } else {
-  //       setState(() {
-  //         isfav = false;
-  //       });
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+      if (favorites.contains(widget.snap["postId"])) {
+        // await FireStoreMethods().favoritespostId(
+        //   widget.sanpuserId,
+        //   widget.snap["postId"],
+        // );
+        print("Fav : $favorites");
+        setState(() {
+          isfav = true;
+        });
+      } else {
+        setState(() {
+          isfav = false;
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   void getComments() async {
     try {
@@ -317,49 +315,49 @@ class _PostCardState extends State<PostCard> {
                   Icons.send,
                 ),
               ),
-              // Expanded(
-              //     child: Align(
-              //   alignment: Alignment.bottomRight,
-              //   child: LikeAnimation(
-              //     isAnimation: isfav,
-              //     // isAnimation:
-              //     //     ,
-              //     smallLike: true,
-              //     child: IconButton(
-              //       onPressed: () async {
-              //         print("userId :  ${widget.sanpuserId}");
-              //         print("PostId : ${widget.snap["postId"]}");
+              Expanded(
+                  child: Align(
+                alignment: Alignment.bottomRight,
+                child: LikeAnimation(
+                  isAnimation: isfav,
+                  // isAnimation:
+                  //     ,
+                  smallLike: true,
+                  child: IconButton(
+                    onPressed: () async {
+                      print("userId :  ${widget.sanpuserId}");
+                      print("PostId : ${widget.snap["postId"]}");
 
-              //         await FireStoreMethods().favoritespostId(
-              //           widget.sanpuserId,
-              //           widget.snap["postId"],
-              //         );
+                      await FireStoreMethods().favoritespostId(
+                        widget.sanpuserId,
+                        widget.snap["postId"],
+                      );
 
-              //         // await  FirebaseFirestore.instance.collection("users").doc(widget.sanpuserId);
+                      // await  FirebaseFirestore.instance.collection("users").doc(widget.sanpuserId);
 
-              //         // await FireStoreMethods().likePost(
-              //         //   widget.snap["postId"],
-              //         //   user.uid,
-              //         //   widget.snap["likes"],
-              //         // );
-              //       },
-              //       icon: isfav
-              //           ? const Icon(
-              //               Icons.bookmark,
-              //               color: Colors.red,
-              //             )
-              //           : const Icon(
-              //               Icons.bookmark_border,
-              //             ),
-              //     ),
-              //   ),
-              //   // IconButton(
-              //   //   icon: const Icon(
-              //   //     Icons.bookmark_border,
-              //   //   ),
-              //   //   onPressed: () {},
-              //   // ),
-              // ))
+                      // await FireStoreMethods().likePost(
+                      //   widget.snap["postId"],
+                      //   user.uid,
+                      //   widget.snap["likes"],
+                      // );
+                    },
+                    icon: isfav
+                        ? const Icon(
+                            Icons.bookmark,
+                            color: Colors.red,
+                          )
+                        : const Icon(
+                            Icons.bookmark_border,
+                          ),
+                  ),
+                ),
+                // IconButton(
+                //   icon: const Icon(
+                //     Icons.bookmark_border,
+                //   ),
+                //   onPressed: () {},
+                // ),
+              ))
             ],
           ),
 
